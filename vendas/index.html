@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>SpyMate - Revele os Segredos do Instagram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8A2BE2;
+            --secondary-color: #ffc107;
+            --dark-text: #2c2c2c;
+            --light-text: #555;
+            --background-color: #fdfaff;
+            --white-color: #ffffff;
+            --border-color: #ebebeb;
+            --success-color: #28a745;
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: var(--background-color);
+            margin: 0;
+            color: var(--dark-text);
+            line-height: 1.7;
+        }
+        .section { padding: 60px 20px; }
+        .container { max-width: 800px; margin: 0 auto; text-align: center; }
+        
+        /* Header */
+        .header { background: linear-gradient(45deg, #8A2BE2, #9370DB); color: var(--white-color); padding: 40px 20px; border-radius: 0 0 50% 50% / 0 0 8% 8%; }
+        .header h1 { font-size: 2.8rem; font-weight: 900; margin: 0 0 15px 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
+        .header p { font-size: 1.2rem; margin: 0; opacity: 0.9; }
+        
+        /* Story Section */
+        .story-section { padding-top: 80px; }
+        .story-section h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 20px; }
+        .story-section p { font-size: 1.1rem; color: var(--light-text); max-width: 650px; margin: 0 auto 20px auto; }
+
+        /* Features Section */
+        .features-section { background-color: var(--white-color); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; text-align: left; }
+        .feature-card { background: #fff; border-radius: 16px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .feature-card .icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; }
+        .feature-card h3 { font-size: 1.3rem; margin: 0 0 10px 0; }
+        .feature-card p { font-size: 1rem; color: var(--light-text); line-height: 1.6; }
+
+        /* Social Proof */
+        .testimonial-card { background: var(--light-purple); border: 2px dashed var(--primary-color); border-radius: 16px; padding: 30px; margin-top: 40px; }
+        .testimonial-card p { font-size: 1.1rem; font-style: italic; color: var(--dark-text); margin: 0 0 15px 0; }
+        .testimonial-author { font-weight: 700; color: var(--primary-color); }
+        
+        /* Offer Section */
+        .offer-section { background: var(--white-color); }
+        .offer-box { border: 2px solid var(--primary-color); border-radius: 16px; padding: 40px; }
+        .offer-box h2 { font-size: 2.5rem; margin-top: 0; }
+        .value-stack { list-style: none; padding: 0; text-align: left; max-width: 450px; margin: 30px auto; }
+        .value-stack li { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border-color); font-size: 1.1rem; }
+        .value-stack li:last-child { border-bottom: none; }
+        .value-stack .value { font-weight: 700; }
+        .value-stack .strikethrough { text-decoration: line-through; color: #999; }
+        .total-value { font-size: 1.3rem; font-weight: 700; margin-top: 20px; }
+        .price { font-size: 4rem; font-weight: 900; color: var(--primary-color); margin: 20px 0; }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--success-color), #238b3b);
+            color: var(--white-color);
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        .cta-button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 25px rgba(40, 167, 69, 0.4); }
+        .secure-payment { font-size: 0.9rem; color: var(--light-text); margin-top: 15px; }
+        
+        /* Guarantee */
+        .guarantee-box { background-color: var(--light-purple); border-radius: 16px; padding: 30px; margin-top: 60px; display: flex; align-items: center; gap: 30px; text-align: left; }
+        .guarantee-box img { width: 100px; height: 100px; }
+        .guarantee-box h3 { margin: 0 0 10px 0; font-size: 1.5rem; color: var(--primary-color); }
+
+        /* FAQ */
+        .faq-item { text-align: left; border-bottom: 1px solid var(--border-color); padding: 20px 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { font-weight: 700; font-size: 1.1rem; cursor: pointer; }
+        .faq-answer { margin-top: 15px; color: var(--light-text); display: none; }
+        
+        /* Footer */
+        .footer { background: var(--dark-text); color: var(--white-color); padding: 20px; font-size: 0.9rem; }
+        .footer a { color: var(--white-color); }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2rem; }
+            .header p { font-size: 1rem; }
+            .story-section h2, .offer-box h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Finalmente, Descubra Quem Anda Espiando Seu Perfil no Instagram</h1>
+            <p>A ferramenta que revela os visitantes secretos, stories anônimos e os verdadeiros "melhores amigos" de qualquer pessoa.</p>
+        </div>
+    </header>
+
+    <section class="section story-section">
+        <div class="container">
+            <h2>Você já se perguntou...</h2>
+            <p>Quem são aquelas pessoas que olham seus stories todos os dias mas nunca interagem? Ou se aquela pessoa especial também visita seu perfil em segredo? A curiosidade e a incerteza podem ser enlouquecedoras. A falta de clareza nos relacionamentos online nos deixa inseguros e ansiosos.</p>
+            <p>Eu passei por isso. Tinha um negócio online e via minhas visualizações de stories subindo, mas não sabia se eram clientes em potencial ou apenas concorrentes. Na minha vida pessoal, a dúvida sobre quem realmente se importava comigo me consumia. Foi por isso que criei o <strong>SpyMate</strong>: para trazer a verdade à tona.</p>
+        </div>
+    </section>
+
+    <section class="section features-section">
+        <div class="container">
+            <h2>O Poder da Verdade na Palma da Sua Mão</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">👀</div>
+                    <h3>Visualizador Anônimo de Stories</h3>
+                    <p>Assista aos stories de qualquer perfil público sem que ninguém saiba. Perfeito para pesquisas de mercado ou apenas para matar a curiosidade sem deixar rastros.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📈</div>
+                    <h3>Quem Visitou Seu Perfil?</h3>
+                    <p>Nossa tecnologia analisa interações e padrões para te dar uma lista precisa das pessoas que mais visitaram um determinado perfil. Acabe com a dúvida!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⭐</div>
+                    <h3>Análise de Melhores Amigos</h3>
+                    <p>Descubra quem são os verdadeiros amigos próximos de um usuário, baseado nas interações que realmente importam. Os resultados podem te surpreender.</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Eu não acreditava que funcionava, mas fiquei chocada! Descobri que um grande cliente em potencial visitava meu perfil todos os dias. Fechei o negócio graças ao SpyMate!"</p>
+                <div class="testimonial-author">- Juliana R., Empreendedora</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section offer-section">
+        <div class="container">
+            <div class="offer-box">
+                <h2>A sua oferta especial hoje!</h2>
+                <p>Você não vai pagar o preço normal. Por tempo limitado, você terá acesso a tudo isso:</p>
+                <ul class="value-stack">
+                    <li><span>✅ Acesso Vitalício ao SpyMate</span> <span class="value">R$197</span></li>
+                    <li><span>✅ Bônus #1: Visualizador Anônimo</span> <span class="value">R$97</span></li>
+                    <li><span>✅ Bônus #2: Análise de Visitantes</span> <span class="value">R$97</span></li>
+                    <li><span>✅ Bônus #3: Suporte Premium</span> <span class="value">R$47</span></li>
+                </ul>
+                <div class="total-value">Valor Total: <span class="strikethrough">R$438</span></div>
+                <div class="price">Apenas 12x de R$9,74</div>
+                <p>ou R$97 à vista</p>
+
+                <a href="https://global.mundpay.com/spaqerv04i" class="cta-button">QUERO ACESSO IMEDIATO</a>
+                <div class="secure-payment">🔒 Pagamento 100% Seguro</div>
+            </div>
+            
+            <div class="guarantee-box">
+                <img src="https://img.icons8.com/plasticine/100/000000/guarantee.png" alt="Selo de Garantia">
+                <div>
+                    <h3>Garantia Incondicional de 7 Dias</h3>
+                    <p>Teste o SpyMate por 7 dias completos. Se você não ficar totalmente satisfeito com as informações que descobrir, basta nos enviar um e-mail e devolveremos 100% do seu dinheiro. Sem perguntas, sem burocracia. O risco é todo nosso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section faq-section">
+        <div class="container">
+            <h2>Perguntas Frequentes</h2>
+            <div class="faq-item">
+                <div class="faq-question">É um pagamento único?</div>
+                <div class="faq-answer">Sim! Você paga uma vez e tem acesso para sempre, incluindo futuras atualizações.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Funciona para perfis privados?</div>
+                <div class="faq-answer">Nossas funcionalidades são otimizadas para perfis públicos, pois respeitamos as configurações de privacidade do Instagram. Para perfis privados, os dados são limitados.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">É seguro? Preciso colocar minha senha?</div>
+                <div class="faq-answer">É 100% seguro. Você nunca precisará fornecer sua senha ou fazer login na sua conta. O aplicativo funciona de forma externa, garantindo sua privacidade e segurança.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 SpyMate. Todos os direitos reservados.</p>
+            <p>Esta ferramenta destina-se a fins de entretenimento e pesquisa de mercado. Use com responsabilidade.</p>
+            <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const answer = item.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html> 
